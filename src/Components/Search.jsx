@@ -30,7 +30,7 @@ const Search = () => {
   }, [query]);
   
   return (
-    <div className="search-modal">
+    <div className="search-modal z-1000">
       <div className="form-field">
         <input
           autoFocus
@@ -58,7 +58,7 @@ const Search = () => {
                 key={item.id}
                 className="flex justify-around search-result-item"
                 onClick={() => {
-                  navigate(`/art/${item.id}`);
+                  navigate(`/product/${item.id}`);
                   set_showSearch(false);
                 }}
               >

@@ -39,6 +39,7 @@ const{showGreens,set_showGreens,showGroceries,set_showGroceries,showHome,set_sho
         </div>
         <div className="flex gap-4">
           <span>{localStorage.getItem('USER_NAME')}</span>
+          <a href='/upload'>Upload</a>
           {!user && <div onClick={()=>{set_show(true)}} classname="icon_wrapper">
             <FaRegUser/>
           </div>}
@@ -59,17 +60,7 @@ const{showGreens,set_showGreens,showGroceries,set_showGroceries,showHome,set_sho
     </div>
 
     </div>
-    <div className='sticky flex bg-[#EEEBD0] h-28 justify-around items-center'>
-      <div className={ showGreens ? 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] bg-green-500 ' : 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] hover:bg-green-100 s'} onClick={()=>{category_select(1)}} >Greens</div>
-      <div className={ showHome ? 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] bg-green-500 ' : 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] hover:bg-green-100 s'}onClick={()=>{category_select(2)}}>Homemade</div>
-      <div className={showGroceries ? 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] bg-green-500 ' : 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] hover:bg-green-100 s'}onClick={()=>{category_select(3)}}>Groceries</div>
-      <div className={ showMeat ? 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] bg-green-500 ' : 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] hover:bg-green-100 s'}onClick={()=>{category_select(4)}}>Meat-Products</div>
-      <div className={ showFruits ? 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] bg-green-500 ' : 'px-10 py-3 rounded-[35px] bg-[#FFFFFF] hover:bg-green-100 s'} onClick={()=>{category_select(5)}} >Fruits</div>
-
-
-
-
-    </div>
+    
     
     </div>
    

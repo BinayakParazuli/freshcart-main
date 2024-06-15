@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-import { postDataToApi } from "../API/api";
+import { postDataToApi } from "./Api";
 
 const Uploadform = () => {
   const [title, setTitle] = useState("");
-  const [category, setCaterogy] = useState("Acrylics");
+  const [category, setCaterogy] = useState("greens");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [location, setLocation] = useState("");
   const [img, setImg] = useState(null);
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -25,6 +26,9 @@ const Uploadform = () => {
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
   };
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,12 +39,13 @@ const Uploadform = () => {
       const imageId = imageData[0].id;
       const formData = {
         email: localStorage.getItem("USER_EMAIL"),
-        artist: localStorage.getItem("USER_NAME"),
+        owner: localStorage.getItem("USER_NAME"),
         title: title,
-        category: category,
+        type: category,
         description: description,
         price: price,
         img: imageId,
+        location: location,
       };
 
       let { data } = await postDataToApi("/api/alls", formData, false);
@@ -50,14 +55,14 @@ const Uploadform = () => {
     } catch (error) {}
   };
   return (
-    <div>
+    <div className="bg-lime-100">
       <div>
         <div>
           <div className="relative flex items-center justify-center min-h-screen ">
-            <div className=" w-full p-10 bg-[#1E2433] rounded-xl z-10">
+            <div className=" w-full p-10 bg-lime-100 rounded-xl z-10">
               <div className="text-center">
                 <h2 className="mt-5 text-3xl font-bold text-gray-200">
-                  UPLOAD YOUR ART!
+                  UPLOAD YOUR PRODUCT!
                 </h2>
                 <p className="mt-2 text-sm text-gray-400">
                   SVG, PNG, JPG or GIF (MAX. 800x400px)
@@ -67,7 +72,7 @@ const Uploadform = () => {
                 {/* onSubmit={onSubmit} */}
                 <div className="grid grid-cols-1 space-y-2">
                   <label className="text-sm font-bold tracking-wide text-gray-500">
-                    Title of the Art
+                    Title of the Product
                   </label>
                   <input
                     className="p-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
@@ -92,15 +97,14 @@ const Uploadform = () => {
                     value={category}
                     onChange={handleCategoryChange}
                   >
-                    <option value="Acrylics" selected>
-                      Acrylics
+                    <option value="greens" selected>
+                      Greens
                     </option>
-                    <option value="Watercolor">Watercolor</option>
-                    <option value="Oil Painting">Oil Painting</option>
-                    <option value="Portrait">Portrait</option>
-                    <option value="Abstract">Abstract</option>
-                    <option value="Glass Art">Glass Art</option>
-                    <option value="Pixel Art">Pixel Art</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="home">Home Made</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="meat">Meat Product</option>
+                    
                   </select>
                   <label className="text-sm font-bold tracking-wide text-gray-500">
                     Description
@@ -124,6 +128,18 @@ const Uploadform = () => {
                     value={price}
                     onChange={handlePriceChange}
                   />
+                   <label className="text-sm font-bold tracking-wide text-gray-500">
+                    Location
+                  </label>
+                  <input
+                    className="p-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                    type="text"
+                    placeholder="Location"
+                    name="price"
+                    value={location}
+                    onChange={handleLocationChange}
+                  />
+                  
                 </div>
                 <div className="grid grid-cols-1 space-y-2">
                   <label className="text-sm font-bold tracking-wide text-gray-500">

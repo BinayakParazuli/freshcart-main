@@ -9,6 +9,7 @@ import ContactUs from './Components/Contactus'
 import Checkout from './Components/Checkout'
 import Cart from './Components/Cart/Cart'
 import Profile from './Components/Profile'
+import Uploadform from './Components/Uploadform'
 
 const App = () => {
   return (
@@ -19,13 +20,14 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="*" element={<Notfound />} />
           <Route path="/Checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/upload" element={<Uploadform/>}/>
         </Routes>
       </div>
     </div>

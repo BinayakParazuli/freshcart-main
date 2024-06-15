@@ -362,65 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAllAll extends Schema.CollectionType {
-  collectionName: 'alls';
-  info: {
-    singularName: 'all';
-    pluralName: 'alls';
-    displayName: 'all';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    owner: Attribute.String;
-    shop: Attribute.String;
-    location: Attribute.String;
-    phone: Attribute.BigInteger;
-    price: Attribute.Integer;
-    type: Attribute.String;
-    email: Attribute.String;
-    description: Attribute.String;
-    img: Attribute.Media<'images'> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::all.all', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::all.all', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiAuthAuth extends Schema.CollectionType {
-  collectionName: 'auths';
-  info: {
-    singularName: 'auth';
-    pluralName: 'auths';
-    displayName: 'auth';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    email: Attribute.String;
-    password: Attribute.String;
-    phone: Attribute.BigInteger;
-    img: Attribute.Media<'images'> & Attribute.Required;
-    name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::auth.auth', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::auth.auth', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -847,6 +788,90 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAllAll extends Schema.CollectionType {
+  collectionName: 'alls';
+  info: {
+    singularName: 'all';
+    pluralName: 'alls';
+    displayName: 'all';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    owner: Attribute.String;
+    shop: Attribute.String;
+    location: Attribute.String;
+    phone: Attribute.BigInteger;
+    price: Attribute.Integer;
+    email: Attribute.String;
+    description: Attribute.String;
+    img: Attribute.Media<'images'> & Attribute.Required;
+    type: Attribute.Enumeration<
+      ['greens', 'home', 'fruits', 'groceries', 'meat']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::all.all', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::all.all', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAuthAuth extends Schema.CollectionType {
+  collectionName: 'auths';
+  info: {
+    singularName: 'auth';
+    pluralName: 'auths';
+    displayName: 'auth';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.String;
+    password: Attribute.String;
+    phone: Attribute.BigInteger;
+    img: Attribute.Media<'images'> & Attribute.Required;
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::auth.auth', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::auth.auth', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCartCart extends Schema.CollectionType {
+  collectionName: 'carts';
+  info: {
+    singularName: 'cart';
+    pluralName: 'carts';
+    displayName: 'cart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.String;
+    cart: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -857,8 +882,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::all.all': ApiAllAll;
-      'api::auth.auth': ApiAuthAuth;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -867,6 +890,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::all.all': ApiAllAll;
+      'api::auth.auth': ApiAuthAuth;
+      'api::cart.cart': ApiCartCart;
     }
   }
 }

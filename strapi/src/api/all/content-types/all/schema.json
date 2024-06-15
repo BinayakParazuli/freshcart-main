@@ -30,9 +30,6 @@
     "price": {
       "type": "integer"
     },
-    "type": {
-      "type": "string"
-    },
     "email": {
       "type": "string"
     },
@@ -40,12 +37,22 @@
       "type": "string"
     },
     "img": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "greens",
+        "home",
+        "fruits",
+        "groceries",
+        "meat"
+      ]
     }
   }
 }
