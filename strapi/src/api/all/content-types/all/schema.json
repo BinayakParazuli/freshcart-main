@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "alls",
+  "info": {
+    "singularName": "all",
+    "pluralName": "alls",
+    "displayName": "all",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "shop": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
